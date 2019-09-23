@@ -1,0 +1,33 @@
+logging:
+  level:
+    com.netflix: WARN
+    org.springframework.web: WARN
+    pe.fintech: DEBUG
+
+security:
+  oauth2:
+    resource:
+       userInfoUri: http://localhost:8901/auth/user
+    client:
+      clientId: fintechapp
+
+spring:
+#  sleuth:
+#     sampler:
+#      probability: 1
+  cloud:
+    stream:
+      bindings:
+        inboundClienteChanges:
+          destination: clienteChangeTopic
+          content-type: application/json
+          group: prestamoGroup      
+      kafka:
+        binder:
+          zkNodes: localhost
+          brokers: localhost
+
+#        input:
+#          destination: clienteChangeTopic
+#          content-type: application/json
+#          group: prestamoGroup

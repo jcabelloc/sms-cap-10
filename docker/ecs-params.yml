@@ -1,0 +1,22 @@
+version: 1
+task_definition:
+  services:
+    fintech-eurekaserver:
+      mem_limit: 1073741824
+    
+    fintech-configurationserver:
+      mem_limit: 1000000000
+
+    fintech-zuulserver:
+      mem_limit: 1073741824
+    
+    fintech-servicio-prestamo:
+      mem_limit: 1073741824
+
+    fintech-servicio-autenticacion:
+      mem_limit: 1073741824
+        
+    fintech-servicio-cliente:
+      mem_limit: 1073741824
+    kafkaserver:
+      mem_limit: 1073741824

@@ -1,0 +1,17 @@
+DROP TABLE IF EXISTS cliente;
+
+CREATE TABLE cliente (
+  	cod_cliente        	SERIAL PRIMARY KEY,
+	nombre              TEXT NOT NULL,
+	email          		TEXT NOT NULL,
+	telefono       		TEXT NOT NULL
+	);
+
+INSERT INTO cliente(cod_cliente, nombre, email, telefono)
+VALUES (1001, 'Maziel Alzamora', 'ma@gmail.com', '987654321');
+INSERT INTO cliente(cod_cliente, nombre, email, telefono)
+VALUES (1002, 'Ivan Ale Caceres', 'iac@gmail.com', '987654321');
+INSERT INTO cliente(cod_cliente, nombre, email, telefono)
+VALUES (1003, 'Marco Comun', 'mc@gmail.com', '987654321');
+INSERT INTO cliente(cod_cliente, nombre, email, telefono)
+VALUES (1004, 'Ivan Oscco Cossio', 'ioc@gmail.com', '987654321');
