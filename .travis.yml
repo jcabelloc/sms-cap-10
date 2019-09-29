@@ -23,7 +23,7 @@ env:
   - secure: BE6PKpfB95a/jIXa+k8Rx3lz8VWsNXRaOGvev9ckJ/wM32AbrfonINQ5yPzdZTdV33GQ8i94LOTeqYNK8MCENKUJusRIIMF5uzHxVs8DvFku1aC+pyD4h+dYYYCZTXY/1RV+eKU1YIIHPoK36lZOyp1uVTQSTSzOrQnGyho6tXnZT5Ti7WHnx/754//gmG/r8Bkvdx8KVPuBiNFMgB2H8cLNHywcuSETOGuRwhI8GzhWrHnsNpKParzHqAlM9dREILghL7jTcK6npSHygChspzTkdOb7h1vIF1raB8hDx8SFxVBejSSz4eGLukERGRxHKMQhms9U0pEYRZ/7D0l3rWxfN1giUaZECrsRlsfm/CHItLlTnGbEjETkQmU56rOl4F4poyCzj1hvmmcGXj9hvVyt0HkiK8AGxIt0XmWjooqJkg/dM0+wJtkqlgHBNT8qC0p+QQ/kT/Clms0iYSCcPCdqwsfaRStzVrHNT9wvgk6Kv2BhgIjDMgCOc7f143V3LPp9l7ysJhA51v+MJ8rELtDt4G3I6zivu5k+OA4E018IQzEqHmS+SYulv4mXGsjQyZ8cEYPebIiWZ9wxMPRAwbBVmBoQsscA7/7Pmj7X5Ad66B4zGJRnZCVpQtQw/2JhRrXGr2qWUvSYM5+mOhbK6dlPWJ4Z0a7HueozjPoiU4o=
   - secure: FXaHpuZakISOVlUs1QLB/zvgdyxj9TvgX2+5v8xgTXcm+CIwfPLqz2vrDC0atKN0qdJhtWuY2ODs5l9TU5p1J6D0P9nMtlu5sx3SO/91HtvPcn6knnTW7JKDX5W/BhZV+mGOQhPnDYV0oS/U9DHIauOBP3zkOBfuTAfHwJNEDo5uvHpYKx7WglTIkhsqMLHIv90NEIcQHxbNW+2QK/DR0xBjPC23jyyeOcsQ8jwLgFMKHWcQL/XLJ2T8YOH/7852/NT9Km7GptD0/5fHJwK/nGtb1LyJ2GFo+CSWc/Ykyu7ePJVKyrRKnbnooMmtjnUIQZ8t2GqIp8U2N3RjWKj9hDkQp/WxKWJdKhdJLL/mRUBaCza0nwSveUW+72p//dhT0G1uecJh1zK8HwNxU+LIzj5sd57Kf5F3czS4KwgGXBDQ8sqlnbYpBt3n6MfT8D+ZpcPbiqaTacMcx7BfUFm6luskOgQPyMLpg4YUdIGrQPYUdqDCKMgRdHmqQX2SPyynEVJLX/hwEwEg+MyeDoNk7G2DgWsr9VWtAvDODvZKYnNnv6FFextxLDf0FDy/Wd8J/xnh+nvv8qLg/MDY6xu4A/ezEOpJBNiRKsg9x4Agjy0KIeeTlKN22+E/OxUCsiyqo1GBupvkDbG3VLlmlCOK07ewnmmB/5ytFjueE4DTl3o=
 before_install:
-- gem install travis -v 1.8.10 --no-rdoc --no-ri
+- gem install travis 
 - sudo curl -k -o /usr/local/bin/ecs-cli https://amazon-ecs-cli.s3.amazonaws.com/ecs-cli-linux-amd64-latest
 - sudo chmod +x /usr/local/bin/ecs-cli
 - export BUILD_NAME=sms-cap-10-$TRAVIS_BRANCH-$(date -u "+%Y%m%d%H%M%S")-$TRAVIS_BUILD_NUMBER
