@@ -1,0 +1,73 @@
+version: '3'
+services:
+  fintech-eurekaserver:
+     image:   jcabelloc/fintech-eurekaserver:${BUILD_NAME}
+     ports:
+       - "8761:8761"
+  fintech-configurationserver:
+    image: jcabelloc/fintech-configurationserver:${BUILD_NAME}
+    ports:
+       - "8888:8888"
+    environment:
+      EUREKASERVER_URI: "http://fintech-eurekaserver:8761/eureka/"
+      EUREKASERVER_PORT: "8761"
+      ENCRYPT_KEY:       "MUYSECRETO"
+  fintech-zuulserver:
+    image: jcabelloc/fintech-zuulserver:${BUILD_NAME}
+    ports:
+      - "5555:5555"
+    environment:
+      PROFILE: "default"
+      SERVER_PORT: "5555"
+      CONFIGSERVER_URI: "http://fintech-configurationserver:8888"
+      EUREKASERVER_URI: "http://fintech-eurekaserver:8761/eureka/"
+      EUREKASERVER_PORT:        "8761"
+      CONFIGSERVER_PORT:        "8888"
+  fintech-servicio-prestamo:
+      image: jcabelloc/fintech-servicio-prestamo:${BUILD_NAME}
+      ports:
+        - "8080:8080"
+      environment:
+        PROFILE: "aws"
+        SERVER_PORT: "8080"
+        CONFIGSERVER_URI: "http://fintech-configurationserver:8888"
+        EUREKASERVER_URI: "http://fintech-eurekaserver:8761/eureka/"
+        KAFKASERVER_URI: "kafkaserver"
+        ZKSERVER_URI: "kafkaserver"
+        EUREKASERVER_PORT:   "8761"
+        CONFIGSERVER_PORT:   "8888"
+        KAFKASERVER_PORT:    "2181"
+  fintech-servicio-autenticacion:
+      image: jcabelloc/fintech-servicio-autenticacion:${BUILD_NAME}
+      ports:
+        - "8901:8901"
+      environment:
+        PROFILE: "aws"
+        SERVER_PORT: "8901"
+        CONFIGSERVER_URI: "http://fintech-configurationserver:8888"
+        EUREKASERVER_URI: "http://fintech-eurekaserver:8761/eureka/"
+        EUREKASERVER_PORT:   "8761"
+        CONFIGSERVER_PORT:   "8888"
+        
+  fintech-servicio-cliente:
+      image: jcabelloc/fintech-servicio-cliente:${BUILD_NAME}
+      ports:
+        - "8085:8085"
+      environment:
+        PROFILE: "aws"
+        SERVER_PORT: "8085"
+        CONFIGSERVER_URI: "http://fintech-configurationserver:8888"
+        EUREKASERVER_URI: "http://fintech-eurekaserver:8761/eureka/"
+        KAFKASERVER_URI: "kafkaserver"
+        ZKSERVER_URI: "kafkaserver"        
+        EUREKASERVER_PORT:   "8761"
+        CONFIGSERVER_PORT:   "8888"
+        KAFKASERVER_PORT:    "2181"
+  kafkaserver:
+    image: johnnypark/kafka-zookeeper
+    ports:
+      - "2181:2181"
+      - "9092:9092"
+    environment:
+        ADVERTISED_HOST: kafkaserver
+        NUM_PARTITIONS: "10"

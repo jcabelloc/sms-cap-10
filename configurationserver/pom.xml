@@ -67,7 +67,7 @@
 			  </executions>
 			  <configuration>
 			    <repository>${docker.image.name}</repository>
-			    <tag>${project.version}</tag>
+			    <tag>${tag}</tag>
 			    <buildArgs>
 			      <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
 			    </buildArgs>
